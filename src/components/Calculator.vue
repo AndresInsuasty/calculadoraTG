@@ -100,7 +100,7 @@
     </b-container>
     <hr />
     <h2>Valor Final</h2>
-    <h3>{{ final_value || 0 }} {{ monedaCliente }}</h3>
+    <h3>$ {{ final_value || 0 }} {{ monedaCliente }}</h3>
 
     <b-button variant="success" type="button" @click="currenciesApi"
       >Consultar Tasas de Cambio</b-button
