@@ -1,8 +1,9 @@
 <template>
   <div>
     <div>
-      <h1>Calculadora de Proyectos</h1>
-      <h2>Trascender Global</h2>
+      <h1>Trascender Global</h1>
+      <h2>Calculadora de Proyectos</h2>
+      
     </div>
     <hr />
     <b-container class="bv-example-row">
@@ -16,7 +17,7 @@
           </div>
         </b-col>
 
-        <b-col cols="6">
+        <b-col cols="4">
           <div>
             <h6>Contribución Deseada: {{ contribucion }}%</h6>
             <b-input-group prepend="0" append="100" class="mt-2">
@@ -137,9 +138,9 @@ export default {
         { value: 0.15, text: "Freelancer Recruiter" },
         { value: 0.1, text: "Freelancer Normal" },
         { value: 0.2, text: "Upwork 20%" },
-        { value: 0.1, text: "Upwork 10%" },
+        { value: 0.11, text: "Upwork 10%" },
         { value: 0.05, text: "Upwork 5%" },
-        { value: 0.05, text: "Internacional PayPal" },
+        { value: 0.0501, text: "Internacional PayPal" },
         { value: 0.03, text: "Internacional Payoneer" },
       ],
     };
