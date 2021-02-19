@@ -1,9 +1,18 @@
 <template>
   <div>
     <div>
-      <h1>Trascender Global</h1>
-      <h2>Calculadora de Proyectos</h2>
-      
+      <b-container class="bv-example-row">
+        <b-row>
+          <b-col cols="1"> 
+            <img src="../assets/TG.png" width="200">
+          </b-col>
+
+          <b-col>
+            <h1>Trascender Global</h1>
+            <h2>Calculadora de Proyectos</h2>
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
     <hr />
     <b-container class="bv-example-row">
@@ -54,10 +63,11 @@
               <b-dropdown-item
                 v-for="p in plataformasProyectos"
                 :key="p.value"
-                @click="plataforma = p.value"
+                @click="plataforma = p"
                 >{{ p.text }}</b-dropdown-item
-              >
-            </b-dropdown>
+              > </b-dropdown
+            ><br />
+            <p>{{ plataforma.text }}</p>
           </div>
         </b-col>
 
@@ -74,8 +84,9 @@
                 :key="moneda.value"
                 @click="monedaCliente = moneda.value"
                 >{{ moneda.text }}</b-dropdown-item
-              >
-            </b-dropdown>
+              > </b-dropdown
+            ><br />
+            <p>{{ monedaCliente }}</p>
           </div>
         </b-col>
 
@@ -92,8 +103,9 @@
               >
               <b-dropdown-item @click="MTUSD"
                 >Dolar Estadounidense (USD)</b-dropdown-item
-              >
-            </b-dropdown>
+              > </b-dropdown
+            ><br />
+            <p>{{ monedaTrascendentales }}</p>
           </div>
         </b-col>
       </b-row>
@@ -108,9 +120,6 @@
   </div>
 </template>
 
-
-
-
 <script>
 import axios from "axios";
 export default {
@@ -121,7 +130,7 @@ export default {
       valorAPagar: 0,
       contribucion: 60,
       monedaCliente: "USD",
-      plataforma: 0.2,
+      plataforma: { value: 0.15, text: "Freelancer Recruiter" },
       rates: {},
       monedas: [
         { value: "USD", text: "Dolar Estadounidense (USD)" },
@@ -150,9 +159,8 @@ export default {
       let final = 0;
       if (this.monedaTrascendentales == "USD") {
         final = this.valorAPagar * this.trm;
-      }
-      else{
-        final = this.valorAPagar
+      } else {
+        final = this.valorAPagar;
       }
 
       final = final / (1 - parseInt(this.contribucion) / 100);
@@ -183,7 +191,7 @@ export default {
           final = (final / this.trm) * parseFloat(this.rates.MXN);
           break;
       }
-      final = final / (1 - this.plataforma);
+      final = final / (1 - this.plataforma.value);
 
       //divisas
       final = final / (1 - 0.25);
