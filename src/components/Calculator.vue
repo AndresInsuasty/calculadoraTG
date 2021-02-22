@@ -1,22 +1,16 @@
 <template>
   <div>
-    <div>
-      <b-container class="bv-example-row">
-        <b-row>
-          <b-col cols="1"> 
-            <img src="../assets/TG.png" width="200">
-          </b-col>
+    <h1>TRASCENDER GLOBAL</h1>
+    <h2>Calculadora de Proyectos</h2>
 
-          <b-col>
-            <h1>Trascender Global</h1>
-            <h2>Calculadora de Proyectos</h2>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
     <hr />
+
     <b-container class="bv-example-row">
       <b-row>
+        <b-col>
+          <img src="../assets/TG.png" width="180" />
+        </b-col>
+
         <b-col>
           <div>
             <h6>Cuantos pesos vale un dolar?</h6>
@@ -25,8 +19,11 @@
             </b-input-group>
           </div>
         </b-col>
+      </b-row>
+      <br />
 
-        <b-col cols="4">
+      <b-row>
+        <b-col>
           <div>
             <h6>Contribución Deseada: {{ contribucion }}%</h6>
             <b-input-group prepend="0" append="100" class="mt-2">
@@ -35,6 +32,7 @@
                 min="0"
                 max="100"
                 v-model="contribucion"
+                @click="saturar_contribucion"
               ></b-form-input>
             </b-input-group>
           </div>
@@ -115,7 +113,7 @@
     <h3>$ {{ final_value || 0 }} {{ monedaCliente }}</h3>
 
     <b-button variant="success" type="button" @click="currenciesApi"
-      >Consultar Tasas de Cambio</b-button
+      class="verde">Consultar Tasas de Cambio</b-button
     >
   </div>
 </template>
@@ -149,6 +147,7 @@ export default {
         { value: 0.2, text: "Upwork 20%" },
         { value: 0.11, text: "Upwork 10%" },
         { value: 0.05, text: "Upwork 5%" },
+        { value: 0.0301, text: "Upwork Direct 3%" },
         { value: 0.0501, text: "Internacional PayPal" },
         { value: 0.03, text: "Internacional Payoneer" },
       ],
@@ -218,13 +217,20 @@ export default {
     MTUSD() {
       this.monedaTrascendentales = "USD";
     },
+    saturar_contribucion() {
+    if (this.contribucion < 50) {
+      this.contribucion = 50;
+    }
   },
+  },
+  
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.test {
-  border: 5px solid red;
+.verde {
+  background: #3ACB89;
 }
+
 </style>
