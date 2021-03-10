@@ -163,7 +163,6 @@ export default {
       }
 
       final = final / (1 - parseInt(this.contribucion) / 100);
-
       switch (this.monedaCliente) {
         case "USD":
           final = final / this.trm;
@@ -191,9 +190,10 @@ export default {
           break;
       }
       final = final / (1 - this.plataforma.value);
+ 
 
       //divisas
-      final = final / (1 - 0.25);
+      final = final / (1 - 0.025);
 
       if (this.trm > 0) {
         return final.toFixed(0);
